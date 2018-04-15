@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 
 # Opening and reading the file
-p = pd.read_csv("C:\Users\Peleg\Desktop\My COding\simplemaps_worldcities_basic.csv")
+p = pd.read_csv("simplemaps_worldcities_basic.csv")
 
 # Defining the user input
 user_city1 = raw_input("Please enter the name of your first city: ")
