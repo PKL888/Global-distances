@@ -6,6 +6,8 @@ import math
 import pandas as pd
 import numpy as np
 
+print "Hello World!"
+
 # Opening and reading the file
 p = pd.read_csv("C:\Users\Peleg\Desktop\My COding\simplemaps_worldcities_basic.csv")
 
