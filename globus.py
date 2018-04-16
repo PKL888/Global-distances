@@ -4,12 +4,9 @@
 
 import math
 import pandas as pd
-import numpy as np
-
-print "Hello World!"
 
 # Opening and reading the file
-p = pd.read_csv("C:\Users\Peleg\Desktop\My COding\simplemaps_worldcities_basic.csv")
+p = pd.read_csv("simplemaps_worldcities_basic.csv")
 
 # Defining the user input
 user_city1 = raw_input("Please enter the name of your first city: ")
@@ -35,8 +32,7 @@ def greatCircleDistance(lat1, lon1, lat2, lon2):
 	d = r * c
 
 	# Printing out the result
-	print ""
-	print "The distance between ", user_city1, " & ", user_city2, " is ", d, "km"
+	print("The distance between %s & %s is %d km" % (user_city1, user_city2, d))
 
 # A new dataframe with a subset of p, and has only the rows appertaining to Barcelona
 cityA = p[(p['City'] == user_city1) & (p['Country'] == user_country_1)]
@@ -54,9 +50,5 @@ lon2 = cityB.iloc[0]['Lon']
 print greatCircleDistance(lat1, lon1, lat2, lon2)
 
 # Debugging and presenting the result
-print ""
-print user_city1, " --> ", user_country_1
-print user_city2, " --> ", user_country_2
-print ""
-print cityA
-print cityB
+print("%s --> %s" % (user_city1, user_country_1))
+print("%s --> %s" % (user_city2, user_country_2))
