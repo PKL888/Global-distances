@@ -24,7 +24,7 @@ def greatCircleDistance(lat1, lon1, lat2, lon2):
 	hj = math.radians(lat2-lat1)
 	hi = math.radians(lon2-lon1)
 
-	# Calculation
+	# Calculation according to the Haversine Formula
 	a = math.sin(hj/2) * math.sin(hj/2) + math.cos(j1) * math.cos(j2) * math.sin(hi/2) * math.sin(hi/2)
 
 	c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
@@ -32,7 +32,7 @@ def greatCircleDistance(lat1, lon1, lat2, lon2):
 	d = r * c
 
 	# Printing out the result
-	print("The distance between %s & %s is %d km" % (user_city1, user_city2, d))
+	print("\nThe distance between %s & %s is %d km" % (user_city1, user_city2, d))
 
 # A new dataframe with a subset of p, and has only the rows appertaining to Barcelona
 cityA = p[(p['City'] == user_city1) & (p['Country'] == user_country_1)]
@@ -50,5 +50,5 @@ lon2 = cityB.iloc[0]['Lon']
 print greatCircleDistance(lat1, lon1, lat2, lon2)
 
 # Debugging and presenting the result
-print("%s --> %s" % (user_city1, user_country_1))
+print("\n%s --> %s" % (user_city1, user_country_1))
 print("%s --> %s" % (user_city2, user_country_2))
