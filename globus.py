@@ -32,12 +32,12 @@ def greatCircleDistance(lat1, lat2, lon1, lon2):
 	c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
 	d = r * c
 
-	print("The distance between %s & %s is %d km" % (user_city1, user_city2, d))
+	print("\nThe distance between %s & %s is %d km" % (user_city1, user_city2, d))
 
 def display_output(cityA, countryA, cityB, countryB, distance):
 	print distance
 
-	print("%s --> %s" % (cityA, countryA))
+	print("\n%s --> %s" % (cityA, countryA))
 	print("%s --> %s" % (cityB, countryB))
 
 
