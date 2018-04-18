@@ -9,16 +9,18 @@ import pandas as pd
 def read_database(path):
 	pd.read_csv(path)
 
-def capture_user_input():
-	raw_input("")
+def capture_input():
+	user_city1 = raw_input("Please enter your first city: ")
+	user_country1 = raw_input("Please enter your first country: ")
+	user_city2 = raw_input("Please enter your second city: ")
+	user_country2 = raw_input("Please enter your second country: ")
 
-def subset_data(data, city, country):	
-	cityX = data[(data['City'] == city) & (data['Country'] == country)]
-	calculate_latlon(cityX)
+	return user_city1, user_country1, user_city2, user_country2
 
-def calculate_latlon(name):
-	lat = name.iloc[0]['Lat']
-	lon = name.iloc[0]['Lon']
+def calculate_latlon(city):
+	lat = city.iloc[0]['Lat']
+	lon = city.iloc[0]['Lon']
+	print city, lat, lon
 
 def greatCircleDistance(lat1, lat2, lon1, lon2):
 	r = 6371 
@@ -45,14 +47,21 @@ def display_output(cityA, countryA, cityB, countryB, distance):
 p = read_database("simplemaps_worldcities_basic.csv")
 
 # Getting the user input [I]
-user_city1, user_country_1, user_city2, user_country2 = capture_user_input()
+user_city1, user_country1, user_city2, user_country2 = capture_input()
+print(user_city1, user_country1, user_city2, user_country2)
 
 # Calculating the location of the cities
-lat1, lon1 = calculate_latlon(p, user_city1, user_country1)
-lat2, lon2 = calculate_latlon(p, user_city2, user_country2)
+cityA = p[(p['City'] == user_city1) & (p['Country'] == user_country1)]
+print cityA
+	
+cityB = p[(p['City'] == user_city2) & (p['Country'] == user_country_2)]
+print cityB
+
+calculate_latlon(cityA)
+calculate_latlon(cityB)
 
 # Calculating the final distance using the Great Circle Distance function
 distance = greatCircleDistance(lat1, lon1, lat2, lon2)
 
 # Displaying the result [O]
-display_output(user_city1, user_country_1, user_city2, user_country2, distance)
+display_output(user_city1, user_country1, user_city2, user_country2, distance)
