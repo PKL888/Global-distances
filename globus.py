@@ -10,12 +10,12 @@ def read_database(path):
 	pd.read_csv(path)
 
 def capture_input():
-	user_city1 = raw_input("Please enter your first city: ")
-	user_country1 = raw_input("Please enter your first country: ")
-	user_city2 = raw_input("Please enter your second city: ")
-	user_country2 = raw_input("Please enter your second country: ")
+	user_city_1 = raw_input("Please enter your first city: ")
+	user_country_1 = raw_input("Please enter your first country: ")
+	user_city_2 = raw_input("Please enter your second city: ")
+	user_country_2 = raw_input("Please enter your second country: ")
 
-	return user_city1, user_country1, user_city2, user_country2
+	return user_city_1, user_country_1, user_city_2, user_country_2
 
 def calculate_latlon(city):
 	lat = city.iloc[0]['Lat']
@@ -34,7 +34,7 @@ def greatCircleDistance(lat1, lat2, lon1, lon2):
 	c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
 	d = r * c
 
-	print("\nThe distance between %s & %s is %d km" % (user_city1, user_city2, d))
+	print("\nThe distance between %s & %s is %d km" % (user_city_1, user_city_2, d))
 
 def display_output(cityA, countryA, cityB, countryB, distance):
 	print distance
@@ -47,14 +47,14 @@ def display_output(cityA, countryA, cityB, countryB, distance):
 p = read_database("simplemaps_worldcities_basic.csv")
 
 # Getting the user input [I]
-user_city1, user_country1, user_city2, user_country2 = capture_input()
-print(user_city1, user_country1, user_city2, user_country2)
+user_city_1, user_country_1, user_city_2, user_country_2 = capture_input()
+print(user_city_1, user_country_1, user_city_2, user_country_2)
 
 # Calculating the location of the cities
-cityA = p[(p['City'] == user_city1) & (p['Country'] == user_country1)]
+cityA = p[(p['City'] == user_city_1) & (p['Country'] == user_country_1)]
 print cityA
 	
-cityB = p[(p['City'] == user_city2) & (p['Country'] == user_country_2)]
+cityB = p[(p['City'] == user_city_2) & (p['Country'] == user_country__2)]
 print cityB
 
 calculate_latlon(cityA)
@@ -64,4 +64,4 @@ calculate_latlon(cityB)
 distance = greatCircleDistance(lat1, lon1, lat2, lon2)
 
 # Displaying the result [O]
-display_output(user_city1, user_country1, user_city2, user_country2, distance)
+display_output(user_city_1, user_country_1, user_city_2, user_country_2, distance)
