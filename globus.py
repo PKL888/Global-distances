@@ -17,10 +17,19 @@ def capture_input():
 
 	return user_city_1, user_country_1, user_city_2, user_country_2
 
+def subset_data(cityA, countryA, cityB, countryB):
+	cityX = p[(p['City'] == cityA) & (p['Country'] == countryA)]
+	cityY = p[(p['City'] == cityB) & (p['Country'] == countryB)]
+
+	lat1, lon1 = calculate_latlon(cityX)
+	lat2, lon2 = calculate_latlon(cityY)
+	
+	return lat1, lon1, lat2, lon2
+
 def calculate_latlon(city):
 	lat = city.iloc[0]['Lat']
 	lon = city.iloc[0]['Lon']
-	print city, lat, lon
+	return lat, lon
 
 def greatCircleDistance(lat1, lat2, lon1, lon2):
 	r = 6371 
@@ -51,14 +60,7 @@ user_city_1, user_country_1, user_city_2, user_country_2 = capture_input()
 print(user_city_1, user_country_1, user_city_2, user_country_2)
 
 # Calculating the location of the cities
-cityA = p[(p['City'] == user_city_1) & (p['Country'] == user_country_1)]
-print cityA
-	
-cityB = p[(p['City'] == user_city_2) & (p['Country'] == user_country_2)]
-print cityB
-
-calculate_latlon(cityA)
-calculate_latlon(cityB)
+lat1, lon1, lat2, lon2 = subset_data(user_city_1, user_country_1, user_city_2, user_country_2)
 
 # Calculating the final distance using the Great Circle Distance function
 distance = greatCircleDistance(lat1, lon1, lat2, lon2)
