@@ -7,7 +7,7 @@ import pandas as pd
 
 # Functions 
 def read_database(path):
-	pd.read_csv(path)
+	return pd.read_csv(path)
 
 def capture_input():
 	user_city_1 = raw_input("Please enter your first city: ")
@@ -54,7 +54,7 @@ print(user_city_1, user_country_1, user_city_2, user_country_2)
 cityA = p[(p['City'] == user_city_1) & (p['Country'] == user_country_1)]
 print cityA
 	
-cityB = p[(p['City'] == user_city_2) & (p['Country'] == user_country__2)]
+cityB = p[(p['City'] == user_city_2) & (p['Country'] == user_country_2)]
 print cityB
 
 calculate_latlon(cityA)
