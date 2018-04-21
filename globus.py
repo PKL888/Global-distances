@@ -23,7 +23,7 @@ def subset_data(cityA, countryA, cityB, countryB):
 
 	lat1, lon1 = calculate_latlon(cityX)
 	lat2, lon2 = calculate_latlon(cityY)
-	
+
 	return lat1, lon1, lat2, lon2
 
 def calculate_latlon(city):
@@ -46,8 +46,6 @@ def greatCircleDistance(lat1, lat2, lon1, lon2):
 	print("\nThe distance between %s & %s is %d km" % (user_city_1, user_city_2, d))
 
 def display_output(cityA, countryA, cityB, countryB, distance):
-	print distance
-
 	print("\n%s --> %s" % (cityA, countryA))
 	print("%s --> %s" % (cityB, countryB))
 
@@ -57,7 +55,6 @@ p = read_database("simplemaps_worldcities_basic.csv")
 
 # Getting the user input [I]
 user_city_1, user_country_1, user_city_2, user_country_2 = capture_input()
-print(user_city_1, user_country_1, user_city_2, user_country_2)
 
 # Calculating the location of the cities
 lat1, lon1, lat2, lon2 = subset_data(user_city_1, user_country_1, user_city_2, user_country_2)
